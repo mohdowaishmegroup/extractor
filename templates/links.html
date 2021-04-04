@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "datasets" as baseUrl %}
+
+<html>
+<body>
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<div class="col-md-6 seobannerSmall">
+    <h1> Free Link Analyzer Tool</h1>
+</div>
+
+<table>
+
+    <thead>
+    <tr>
+        <td>Links</td>
+        <td>Count</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Total Links</strong></td>
+        <td> {{totallinks}}   </td>
+
+    </tr>
+    <tr>
+        <td><strong>Internal Links</strong></td>
+        <td> {{totalint}}</td>
+
+    </tr>
+    <tr>
+        <td><strong>External Links</strong></td>
+        <td>{{totalexter}}</td>
+    </tr>
+
+    </tbody>
+
+    </table>
+
+<p>Enter a URL           </p>
+<form action="link" method="post"> {% csrf_token %}
+    <input type="text" name="textc" class="form-control" placeholder="Enter Website url" />
+    <br />
+    <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="text"  name="names" value="{{ filenames }}" placeholder="Filename" />
+    </div>
+    <input class="btn btn-info" type="submit" value="Submit" name="submit"/>
+
+<br />
+
+           <a href= "{{baseUrl}}/{{filenames}}" download="download">
+            <input type="button" value= "Download" id="singup" >
+          </a>
+<br>
+<a href="seo" class="next">BACK &raquo;</a>
+</br>
+</a>
+ <table>
+     <h3>Internal Links <small>Links inside the current website</small></h3>
+     <tbody>
+     {% for link in intLinks %}
+     <tr><td>{{link}}</td></tr>
+     {% endfor %}
+     </tbody>
+  </table>
+
+     <table>
+     <h3>External Links <small>Links inside the current website</small></h3>
+     <tbody>
+     {% for link in extLinks %}
+     <tr><td>{{link}}</td></tr>
+     {% endfor %}
+     </tbody>
+  </table>
+</form>
+</body>
+</html>

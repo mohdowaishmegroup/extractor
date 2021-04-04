@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "datasets" as baseUrl %}
+
+<html>
+<body>
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+table {
+    border: 3px solid black;
+    float: left;
+    width: 148px;
+
+
+ }
+thead {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+}
+tbody {
+    height: 200px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+</style>
+
+<div class="col-md-6 seobannerSmall">
+    <h1> Website count Tool</h1>
+</div>
+
+
+<p>Enter a URL           </p>
+<form action="web" method="post"> {% csrf_token %}
+    <input type="text" name="texta" class="form-control" value="{{ locations }}" placeholder="Enter Website url" />
+    <br />
+    <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="text"  name="names" value="{{ filenames }}" placeholder="Filename" />
+    </div>
+    <input class="btn btn-info" type="submit" value="Count Word" name="submit"/>
+
+<br />
+
+           <a href= "{{baseUrl}}/{{filenames}}" download="download">
+            <input type="button" value= "Download" id="singup" >
+          </a>
+<br>
+<a href="seo" class="next">BACK </a>
+
+</br>
+</a>
+ <table>
+     <h2>All Keyword</h2>
+     <h3>Keyword <small>Common keywords website</small></h3>
+     <tbody>
+     {% for keyword in keyword %}
+     <tr><td>{{keyword}}</td></tr>
+     {% endfor %}
+     </tbody>
+  </table>
+
+     <table>
+     <h3>All Keyword <small>in website</small></h3>
+     <tbody>
+     {% for Keyword in commonkeyword  %}
+     <tr><td>{{Keyword}}</td></tr>
+     {% endfor %}
+     </tbody>
+  </table>
+</form>
+</body>
+</html>

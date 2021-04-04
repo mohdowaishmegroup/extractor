@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "datasets" as baseUrl %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<html>
+<body>
+
+<h1>Seo Tools</h1>
+
+<style>
+.image {
+    width: 100px;
+	height:100px;
+	border: 15px ;
+
+	margin: 20px;
+	text-align:left;
+}
+</style>
+<a href="wordCounter" target="blank">
+<img src="{% static 'img/counter.jpg' %}" class="image" alt="register" />
+</a>
+<td>
+    <a href="link" target="blank">
+<img src="{% static 'img/keyword_density_checker.png' %}" class="image" alt="register" />
+    </a>
+</td>
+
+<td>
+    <a href="web" target="blank">
+<img src="{% static 'img/website.png' %}" class="image" alt="register" />
+    </a>
+</td>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+{% load static %}
+{% static "datasets" as baseUrl %}
+
+<html>
+<body>
+<style>
+.mytext {
+    width: 500px;
+	height:200px;
+	border: 15px solid blue;
+	margin: 20px;
+	text-align:left;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h1>The text area element</h1>
+
+<form action="wordCounter" method="post"> {% csrf_token %}
+
+<label for="w3review">Word Counter:</label>
+<textarea id="text" name="textc" class="mytext" >
+
+</textarea>
+  <br>
+  <input type="submit" value="Submit">
+</br>
+    <br>
+<a href="seo" class="next">BACK &raquo;</a>
+</a>
+
+  <br>
+  {{a}}
+
+    <table>
+
+    <thead>
+    <tr>
+        <td> Charachter</td>
+        <td> Word</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Total Charachter</strong></td>
+        <td> {{b}}   </td>
+
+    </tr>
+    <tr>
+        <td><strong>Total Word</strong></td>
+        <td> {{c}}</td>
+
+    </tr>
+
+    </tbody>
+
+    </table>
+</form>
+
+</body>
+</html>
